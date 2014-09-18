@@ -1,0 +1,19 @@
+Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\Directory\shell\totalcmd]
+
+[HKEY_CLASSES_ROOT\Directory\shell\totalcmd]
+@="Open TC Here"
+"icon"="E:\\Yan\\TC\\x64\\TOTALCMD64.EXE"
+
+[HKEY_CLASSES_ROOT\Directory\shell\totalcmd\command]
+@="\"E:\\Yan\\TC\\x64\\TOTALCMD64.EXE\" /O /T /A /S /L=\"%V\""
+
+[-HKEY_CLASSES_ROOT\*\shell\totalcmd]
+
+[HKEY_CLASSES_ROOT\*\shell\totalcmd]
+@="Open TC Here"
+"icon"="E:\\Yan\\TC\\x64\\TOTALCMD64.EXE"
+
+[HKEY_CLASSES_ROOT\*\shell\totalcmd\command]
+@="\"E:\\Yan\\TC\\x64\\TOTALCMD64.EXE\" /O /T /A /S /L=\"%V\""
