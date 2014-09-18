@@ -37,17 +37,24 @@ namespace OpenTCHere
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            var name = Registry.GetValue(key1, "", null);
             var value = Registry.GetValue(key1a, "", null);
-            if (value != null)
+            if (name != null && value != null)
             {
+                txtName.Text = name.ToString();
                 txtArgs.Text = value.ToString().Replace("\"" + tc + "\" ", "");
             }
             else
             {
+                txtName.Text = label;
                 btnUnreg.Enabled = false;
             }
-
          }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            txtArgs.Focus();
+        }
 
         private void btnReg_Click(object sender, EventArgs e)
         {
@@ -58,13 +65,20 @@ namespace OpenTCHere
                 return;
             }
 
+            string name = txtName.Text.Trim();
+            if (string.IsNullOrEmpty(name))
+            {
+                name = label;
+            }
+            
+
             args = "\"" + tc + "\" " + args;
 
-            Registry.SetValue(key1, "", label);
+            Registry.SetValue(key1, "", name);
             Registry.SetValue(key1, "icon", tc);
             Registry.SetValue(key1a, "", args);
 
-            Registry.SetValue(key2, "", label);
+            Registry.SetValue(key2, "", name);
             Registry.SetValue(key2, "icon", tc);
             Registry.SetValue(key2a, "", args);
             
@@ -80,6 +94,7 @@ namespace OpenTCHere
             Registry.ClassesRoot.DeleteSubKeyTree(@"*\shell\totalcmd");
 
             txtArgs.Text = "";
+            txtArgs.Focus();
             btnUnreg.Enabled = false;
             success();
 
@@ -90,9 +105,11 @@ namespace OpenTCHere
             MessageBox.Show("操作成功", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void urlAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(url);
         }
+
+
     }
 }
