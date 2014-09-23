@@ -21,7 +21,7 @@ namespace OpenTCHere
                 string tc = Environment.GetEnvironmentVariable("COMMANDER_EXE");
                 if (string.IsNullOrEmpty(tc))
                 {
-                    MessageBox.Show("请先启动 Total Commander", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("请在 Total Commander 中启动此程序", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
